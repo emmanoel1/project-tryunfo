@@ -10,5 +10,4 @@ class App extends React.Component {
   }
 }
 
-// Starting!
 export default App;
