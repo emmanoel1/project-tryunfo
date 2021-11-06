@@ -9,11 +9,11 @@ class Form extends React.Component {
       cardAttr1,
       cardAttr2,
       cardAttr3,
-      onInputChange,
       cardImage,
       cardRare,
       cardTrunfo,
       isSaveButtonDisabled,
+      onInputChange,
       onSaveButtonClick,
       // hasTrunfo,
     } = this.props;
