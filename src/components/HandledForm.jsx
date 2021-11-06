@@ -39,7 +39,7 @@ class HandledForm extends React.Component {
       raritySelect,
       superTrunfo,
     } = this.state;
-    console.log(this.state);
+
     return (
       <div>
         <Form
