@@ -16,6 +16,7 @@ class Card extends React.Component {
 
     return (
       <div>
+        <h2>Card Preview</h2>
         <p data-testid="name-card">{ cardName }</p>
         <img src={ cardImage } alt={ cardName } data-testid="image-card" />
         <p data-testid="description-card">{ cardDescription }</p>
