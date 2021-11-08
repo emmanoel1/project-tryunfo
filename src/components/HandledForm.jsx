@@ -15,6 +15,7 @@ class HandledForm extends React.Component {
       raritySelect: '',
       superTrunfo: false,
       saveIsDisabled: true,
+      savedCards: [],
     };
     this.onInputChange = this.onInputChange.bind(this);
     this.btnSaveChangeValidate = this.btnSaveChangeValidate.bind(this);
@@ -58,6 +59,31 @@ class HandledForm extends React.Component {
   }
 
   btnSaveChange() {
+    const {
+      nameInput,
+      descriptionInput,
+      attr1,
+      attr2,
+      attr3,
+      imgInput,
+      raritySelect,
+      superTrunfo,
+      savedCards,
+    } = this.state;
+
+    const cardSaved = {
+      nameInput,
+      descriptionInput,
+      attr1,
+      attr2,
+      attr3,
+      imgInput,
+      raritySelect,
+      superTrunfo,
+    };
+
+    savedCards.push(cardSaved);
+
     this.setState({
       nameInput: '',
       descriptionInput: '',
@@ -65,7 +91,7 @@ class HandledForm extends React.Component {
       attr1: 0,
       attr2: 0,
       attr3: 0,
-      raritySelect: 'rare',
+      raritySelect: 'normal',
       superTrunfo: false,
       saveIsDisabled: true,
     });
@@ -82,6 +108,7 @@ class HandledForm extends React.Component {
       raritySelect,
       superTrunfo,
       saveIsDisabled,
+      savedCards,
     } = this.state;
 
     return (
@@ -109,6 +136,22 @@ class HandledForm extends React.Component {
           cardRare={ raritySelect }
           cardTrunfo={ superTrunfo }
         />
+        <ul>
+          { savedCards.map((card) => (
+            <li key={ card.cardName }>
+              <Card
+                cardName={ card.nameInput }
+                cardDescription={ card.descriptionInput }
+                cardAttr1={ card.attr1 }
+                cardAttr2={ card.attr2 }
+                cardAttr3={ card.attr3 }
+                cardImage={ card.imgInput }
+                cardRare={ card.raritySelect }
+                cardTrunfo={ card.superTrunfo }
+              />
+            </li>
+          ))}
+        </ul>
       </div>
     );
   }
