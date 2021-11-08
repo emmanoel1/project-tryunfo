@@ -15,19 +15,19 @@ class HandledForm extends React.Component {
       raritySelect: '',
       superTrunfo: false,
       saveIsDisabled: true,
-    //   onSaveButtonClick,
     };
     this.onInputChange = this.onInputChange.bind(this);
+    this.btnSaveChangeValidate = this.btnSaveChangeValidate.bind(this);
     this.btnSaveChange = this.btnSaveChange.bind(this);
   }
 
   onInputChange({ target }) {
     this.setState({ [target.id]: target.value }, () => {
-      this.setState({ saveIsDisabled: this.btnSaveChange() });
+      this.setState({ saveIsDisabled: this.btnSaveChangeValidate() });
     });
   }
 
-  btnSaveChange() {
+  btnSaveChangeValidate() {
     const {
       nameInput,
       descriptionInput,
@@ -57,6 +57,20 @@ class HandledForm extends React.Component {
     return false;
   }
 
+  btnSaveChange() {
+    this.setState({
+      nameInput: '',
+      descriptionInput: '',
+      imgInput: '',
+      attr1: 0,
+      attr2: 0,
+      attr3: 0,
+      raritySelect: 'rare',
+      superTrunfo: false,
+      saveIsDisabled: true,
+    });
+  }
+
   render() {
     const {
       nameInput,
@@ -69,11 +83,21 @@ class HandledForm extends React.Component {
       superTrunfo,
       saveIsDisabled,
     } = this.state;
+
     return (
       <div>
         <Form
+          cardName={ nameInput }
+          cardDescription={ descriptionInput }
+          cardAttr1={ attr1 }
+          cardAttr2={ attr2 }
+          cardAttr3={ attr3 }
+          cardImage={ imgInput }
+          cardRare={ raritySelect }
+          cardTrunfo={ superTrunfo }
           onInputChange={ this.onInputChange }
           isSaveButtonDisabled={ saveIsDisabled }
+          onSaveButtonClick={ this.btnSaveChange }
         />
         <Card
           cardName={ nameInput }
