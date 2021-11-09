@@ -122,6 +122,7 @@ class HandledForm extends React.Component {
           cardImage={ imgInput }
           cardRare={ raritySelect }
           cardTrunfo={ superTrunfo }
+          hasTrunfo={ savedCards.some((card) => card.superTrunfo === 'on') }
           onInputChange={ this.onInputChange }
           isSaveButtonDisabled={ saveIsDisabled }
           onSaveButtonClick={ this.btnSaveChange }
@@ -151,6 +152,7 @@ class HandledForm extends React.Component {
               />
             </li>
           ))}
+          { }
         </ul>
       </div>
     );
